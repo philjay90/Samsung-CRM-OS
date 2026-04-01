@@ -1,25 +1,34 @@
 import { useLocation } from 'react-router-dom'
 
-const pageTitles = {
-  '/': 'Dashboard',
-  '/customer-intelligence': 'Customer Intelligence',
-  '/journey-orchestration': 'Journey Orchestration',
-  '/rewards-epp': 'Rewards & EPP Hub',
-  '/personalization': 'Personalization Engine',
-  '/governance': 'Governance & Risk',
-  '/experimentation': 'Experimentation',
-  '/co-creation': 'Co-Creation Workspace',
-  '/settings': 'Settings',
+const pageBreadcrumbs = {
+  '/': ['CRM OS', 'Dashboard'],
+  '/customer-intelligence': ['CRM OS', 'Intelligence'],
+  '/journey-orchestration': ['CRM OS', 'Journeys'],
+  '/rewards-epp': ['CRM OS', 'Rewards & EPP'],
+  '/personalization': ['CRM OS', 'Personalization'],
+  '/brand-center': ['CRM OS', 'Brand Center'],
+  '/creative-intelligence': ['CRM OS', 'Creative Intelligence'],
+  '/governance': ['CRM OS', 'Governance'],
+  '/experimentation': ['CRM OS', 'Experimentation'],
+  '/co-creation': ['CRM OS', 'Co-Creation'],
+  '/settings': ['CRM OS', 'Settings'],
 }
 
 export default function TopBar() {
   const location = useLocation()
-  const title = pageTitles[location.pathname] || 'Samsung CRM OS'
+  const crumbs = pageBreadcrumbs[location.pathname] || ['CRM OS']
 
   return (
     <header className="topbar">
       <div className="topbar-left">
-        <span className="topbar-page-title">{title}</span>
+        <nav className="topbar-breadcrumb">
+          {crumbs.map((crumb, i) => (
+            <span key={i}>
+              {i > 0 && <span className="breadcrumb-sep">/</span>}
+              <span className={i === crumbs.length - 1 ? 'breadcrumb-active' : 'breadcrumb-parent'}>{crumb}</span>
+            </span>
+          ))}
+        </nav>
       </div>
       <div className="topbar-right">
         <div className="search-bar topbar-search">

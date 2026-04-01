@@ -7,6 +7,8 @@ import CustomerIntelligence from './pages/CustomerIntelligence'
 import JourneyOrchestration from './pages/JourneyOrchestration'
 import RewardsEPP from './pages/RewardsEPP'
 import PersonalizationEngine from './pages/PersonalizationEngine'
+import BrandCenter from './pages/BrandCenter'
+import CreativeIntelligence from './pages/CreativeIntelligence'
 import GovernanceRisk from './pages/GovernanceRisk'
 import Experimentation from './pages/Experimentation'
 import CoCreation from './pages/CoCreation'
@@ -28,6 +30,8 @@ function App() {
             <Route path="/journey-orchestration" element={<JourneyOrchestration />} />
             <Route path="/rewards-epp" element={<RewardsEPP />} />
             <Route path="/personalization" element={<PersonalizationEngine />} />
+            <Route path="/brand-center" element={<BrandCenter />} />
+            <Route path="/creative-intelligence" element={<CreativeIntelligence />} />
             <Route path="/governance" element={<GovernanceRisk />} />
             <Route path="/experimentation" element={<Experimentation />} />
             <Route path="/co-creation" element={<CoCreation />} />

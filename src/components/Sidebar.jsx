@@ -6,6 +6,8 @@ const navItems = [
   { path: '/journey-orchestration', label: 'Journey Orchestration', icon: 'journey' },
   { path: '/rewards-epp', label: 'Rewards & EPP Hub', icon: 'rewards' },
   { path: '/personalization', label: 'Personalization Engine', icon: 'personalize' },
+  { path: '/brand-center', label: 'Brand Center', icon: 'palette' },
+  { path: '/creative-intelligence', label: 'Creative Intelligence', icon: 'sparkle' },
   { path: '/governance', label: 'Governance & Risk', icon: 'shield' },
   { path: '/experimentation', label: 'Experimentation', icon: 'experiment' },
   { path: '/co-creation', label: 'Co-Creation Workspace', icon: 'collaborate' },
@@ -45,6 +47,20 @@ function NavIcon({ type }) {
         <path d="M3 3h5v5H3zM12 3h5v5h-5zM3 12h5v5H3z"/>
         <circle cx="14.5" cy="14.5" r="3" fill="none" stroke="currentColor" strokeWidth="1.5"/>
         <path d="M14.5 12.5v4M12.5 14.5h4" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+      </svg>
+    ),
+    palette: (
+      <svg viewBox="0 0 20 20" fill="currentColor">
+        <rect x="2" y="2" width="7" height="7" rx="1" opacity="0.9"/>
+        <rect x="11" y="2" width="7" height="7" rx="1" opacity="0.7"/>
+        <rect x="2" y="11" width="7" height="7" rx="1" opacity="0.5"/>
+        <rect x="11" y="11" width="7" height="7" rx="1" opacity="0.3"/>
+      </svg>
+    ),
+    sparkle: (
+      <svg viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10 1l1.5 5.5L17 8l-5.5 1.5L10 15l-1.5-5.5L3 8l5.5-1.5z"/>
+        <path d="M15 2l.7 2.3L18 5l-2.3.7L15 8l-.7-2.3L12 5l2.3-.7z" opacity="0.5"/>
       </svg>
     ),
     shield: (
