@@ -120,6 +120,7 @@ input, select, textarea {
 .page-container {
   padding: var(--sp-8);
   max-width: var(--content-max-width);
+  overflow-x: hidden;
   animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -220,6 +221,8 @@ input, select, textarea {
   border-radius: var(--card-radius);
   padding: var(--sp-6);
   box-shadow: var(--card-shadow);
+  overflow-x: auto;
+  min-width: 0;
 }
 
 .card-title {
@@ -433,4 +436,29 @@ input, select, textarea {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .page-container {
+    padding: var(--sp-6);
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .three-col {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kpi-row {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .three-col {
+    grid-template-columns: 1fr;
+  }
 }

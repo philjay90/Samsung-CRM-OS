@@ -25,7 +25,7 @@ export default function CoCreation() {
         <p className="page-subtitle">Samsung and WONGDOODY build the loyalty roadmap together</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr 300px', gap: 'var(--sp-5)', minHeight: '600px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(220px, 280px) minmax(0, 1fr) minmax(220px, 300px)', gap: 'var(--sp-5)', minHeight: '600px' }}>
         {/* Left Panel — Active Use Cases */}
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           <div style={{ padding: 'var(--sp-4) var(--sp-5)', borderBottom: '1px solid #eef0f4' }}>

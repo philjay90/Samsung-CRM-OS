@@ -230,10 +230,10 @@ function AssetLibrary() {
       </div>
 
       {/* Asset Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--sp-5)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--sp-5)' }}>
         {/* Galaxy S25 Ultra */}
         <AssetCard
-          preview={<PhoneVisual />}
+          preview={<img src="/images/galaxy-s25.jpg" alt="Galaxy S25 Ultra" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
           name="Galaxy S25 Ultra — Hero Shot"
           type="Device Visual"
           downloads={2341}
@@ -242,7 +242,7 @@ function AssetLibrary() {
         />
         {/* Galaxy Buds3 Pro */}
         <AssetCard
-          preview={<BudsVisual />}
+          preview={<img src="/images/buds-case.jpg" alt="Galaxy Buds3 Pro" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
           name="Galaxy Buds3 Pro — Lifestyle"
           type="Device Visual"
           downloads={891}
@@ -251,7 +251,7 @@ function AssetLibrary() {
         />
         {/* Bespoke Fridge */}
         <AssetCard
-          preview={<FridgeVisual />}
+          preview={<img src="/images/fridge.jpg" alt="Samsung Bespoke Fridge" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
           name="Samsung Bespoke Fridge — Lifestyle"
           type="Device Visual"
           downloads={445}
@@ -318,66 +318,6 @@ function AssetCard({ preview, name, type, downloads, updated, badges }) {
 }
 
 /* ---- CSS Device Visuals ---- */
-function PhoneVisual() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #0A0F2C, #1428A0)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-      <div style={{ position: 'absolute', width: '120px', height: '120px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,178,255,0.15) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
-      <div style={{ width: '56px', height: '112px', borderRadius: '10px', background: 'linear-gradient(180deg, #1428A0, #00B2FF)', border: '2px solid rgba(255,255,255,0.15)', position: 'relative', boxShadow: '0 4px 20px rgba(0,0,0,0.4)' }}>
-        {/* Camera array */}
-        <div style={{ position: 'absolute', top: '8px', right: '-14px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          {[0,1,2].map(i => (
-            <div key={i} style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#222', border: '1.5px solid #888', boxShadow: '0 0 3px rgba(0,178,255,0.4)' }} />
-          ))}
-        </div>
-        {/* Screen dots */}
-        <div style={{ padding: '14px 6px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4px' }}>
-          {Array(9).fill(0).map((_, i) => (
-            <div key={i} style={{ width: '6px', height: '6px', borderRadius: '2px', background: `rgba(255,255,255,${0.1 + Math.random() * 0.15})` }} />
-          ))}
-        </div>
-      </div>
-      <span style={{ position: 'absolute', bottom: '10px', fontSize: '0.6rem', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.04em' }}>Titanium Finish</span>
-    </div>
-  )
-}
-
-function BudsVisual() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #1A1A2E, #1428A0)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-      <div style={{ position: 'absolute', width: '80px', height: '80px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)' }} />
-      {/* Left bud */}
-      <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: '#e8e8e8', marginRight: '24px', position: 'relative', boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
-        <div style={{ position: 'absolute', bottom: '-14px', left: '50%', transform: 'translateX(-50%)', width: '2px', height: '14px', background: '#ccc', borderRadius: '1px' }} />
-      </div>
-      {/* Right bud */}
-      <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: '#e8e8e8', position: 'relative', boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
-        <div style={{ position: 'absolute', bottom: '-14px', left: '50%', transform: 'translateX(-50%)', width: '2px', height: '14px', background: '#ccc', borderRadius: '1px' }} />
-      </div>
-      {/* Case */}
-      <div style={{ position: 'absolute', bottom: '28px', width: '44px', height: '22px', borderRadius: '11px', background: '#e0e0e0', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }} />
-    </div>
-  )
-}
-
-function FridgeVisual() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: '#F4F6FA', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ width: '70px', height: '140px', border: '2px solid #1428A0', borderRadius: '6px', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-        {/* Upper doors */}
-        <div style={{ flex: 1, display: 'flex' }}>
-          <div style={{ flex: 1, background: '#B2C9AD', borderBottom: '1px solid #1428A0', borderRight: '1px solid #1428A0' }} />
-          <div style={{ flex: 1, background: '#B2C9AD', borderBottom: '1px solid #1428A0' }} />
-        </div>
-        {/* Lower drawer */}
-        <div style={{ height: '35%', background: '#F5ECD7', borderTop: '1px solid #1428A0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ width: '24px', height: '1.5px', background: '#1428A0', opacity: 0.4 }} />
-        </div>
-        <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', fontSize: '0.35rem', fontWeight: 700, color: '#1428A0', letterSpacing: '0.1em', opacity: 0.5 }}>BESPOKE</span>
-      </div>
-    </div>
-  )
-}
-
 function EmailTemplateVisual() {
   return (
     <div style={{ width: '100%', height: '100%', background: '#f0f1f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

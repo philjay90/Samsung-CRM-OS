@@ -65,28 +65,28 @@ export default function CreativeIntelligence() {
         <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: 'var(--sp-5)', marginTop: '-8px' }}>Benchmarks from your highest-CTR CRM campaigns — used to train new suggestions</p>
         <div style={{ display: 'flex', gap: 'var(--sp-5)', overflowX: 'auto', paddingBottom: 'var(--sp-2)' }}>
           <PerfCard
-            visual={<MiniEmail />}
+            visual={<img src="/images/galaxy-s25.jpg" alt="Galaxy S25" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
             name="Galaxy S25 Launch Email"
             stats="CTR: 6.8% · Opens: 2.1M · CLV Lift: +$142/customer"
             badge="Top Performer"
             badgeClass="badge-warning"
           />
           <PerfCard
-            visual={<MiniPush />}
+            visual={<img src="/images/buds-white.jpg" alt="Galaxy Buds" style={{ width: '100%', height: '100%', objectFit: 'cover', background: '#f8f8f8' }} />}
             name="Elite Early Access Push"
             stats="CTR: 11.2% · Sent: 87K · Conversion: 34%"
             badge="Highest CTR"
             badgeClass="badge-danger"
           />
           <PerfCard
-            visual={<MiniSMS />}
+            visual={<img src="/images/buds-case.jpg" alt="Galaxy Buds Pro" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
             name="Rewards Redemption SMS"
             stats="CTR: 8.4% · Response Rate: 22% · Opt-outs: 0.3%"
             badge="Low Fatigue"
             badgeClass="badge-success"
           />
           <PerfCard
-            visual={<MiniEmail2 />}
+            visual={<img src="/images/fridge.jpg" alt="Samsung Fridge" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
             name="EPP Welcome Series Email 2"
             stats="CTR: 5.1% · CLV Lift: +$89/customer"
             badge="Best CLV Impact"
@@ -144,7 +144,7 @@ function InsightBanner() {
 /* ========== CONCEPT CARD ========== */
 function ConceptCard({ visual, title, predictedCTR, clvImpact, segment, headline, body, channels, tones, brandSafety }) {
   return (
-    <div className="card" style={{ padding: 0, overflow: 'hidden', display: 'grid', gridTemplateColumns: '340px 1fr' }}>
+    <div className="card" style={{ padding: 0, overflow: 'hidden', display: 'grid', gridTemplateColumns: 'minmax(0, 340px) minmax(0, 1fr)' }}>
       {/* Left — Visual */}
       <div style={{ position: 'relative', minHeight: '340px' }}>
         {visual}
@@ -204,64 +204,29 @@ function Stat({ label, value, color }) {
 }
 
 /* ========== DEVICE MOCKUPS ========== */
-function PhoneMockup() {
+function ProductImage({ src, alt, overlay, bg = '#0A0F2C' }) {
   return (
-    <div style={{ width: '100%', height: '100%', background: '#0A0F2C', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', width: '200px', height: '200px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,178,255,0.12) 0%, transparent 70%)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
-      <span style={{ fontSize: '0.6rem', fontWeight: 600, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '16px' }}>SAMSUNG</span>
-      <div style={{ width: '80px', height: '160px', borderRadius: '14px', background: 'linear-gradient(180deg, #1428A0, #00B2FF)', border: '2px solid rgba(255,255,255,0.12)', position: 'relative', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
-        <div style={{ position: 'absolute', top: '10px', right: '-18px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          {[0,1,2].map(i => (
-            <div key={i} style={{ width: '13px', height: '13px', borderRadius: '50%', background: '#1a1a2e', border: '2px solid #888', boxShadow: '0 0 6px rgba(0,178,255,0.3), inset 0 0 3px rgba(0,178,255,0.2)' }} />
-          ))}
+    <div style={{ width: '100%', height: '100%', background: bg, position: 'relative', overflow: 'hidden' }}>
+      <img src={src} alt={alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      {overlay && (
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '16px 20px', background: 'linear-gradient(transparent, rgba(0,0,0,0.7))' }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: 'white', fontSize: '0.95rem' }}>{overlay}</span>
         </div>
-        <div style={{ padding: '20px 8px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '5px' }}>
-          {Array(12).fill(0).map((_, i) => (
-            <div key={i} style={{ width: '8px', height: '8px', borderRadius: '2px', background: `rgba(255,255,255,${0.08 + Math.random() * 0.12})` }} />
-          ))}
-        </div>
-      </div>
-      <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: 'white', fontSize: '0.95rem', marginTop: '16px' }}>Galaxy S25 Ultra</span>
+      )}
     </div>
   )
+}
+
+function PhoneMockup() {
+  return <ProductImage src="/images/galaxy-s25.jpg" alt="Galaxy S25 Ultra" overlay="Galaxy S25 Ultra" />
 }
 
 function BudsMockup() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #1A1A2E, #1428A0)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', width: '160px', height: '160px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)' }} />
-      <div style={{ display: 'flex', gap: '40px', marginBottom: '20px' }}>
-        {[false, true].map((flip, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'linear-gradient(135deg, #f0f0f0, #d4d4d4)', boxShadow: '0 2px 12px rgba(0,0,0,0.3)', position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '6px', left: '50%', transform: 'translateX(-50%)', width: '6px', height: '6px', borderRadius: '50%', background: 'rgba(0,0,0,0.1)' }} />
-            </div>
-            <div style={{ width: '2.5px', height: '20px', background: 'linear-gradient(180deg, #d4d4d4, #aaa)', borderRadius: '1px', marginTop: '-2px' }} />
-          </div>
-        ))}
-      </div>
-      <div style={{ width: '56px', height: '28px', borderRadius: '14px', background: 'linear-gradient(135deg, #e8e8e8, #ccc)', boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }} />
-      <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: 'rgba(255,255,255,0.8)', fontSize: '0.82rem', marginTop: '20px' }}>Redeem. Listen. Love.</span>
-    </div>
-  )
+  return <ProductImage src="/images/buds-case.jpg" alt="Galaxy Buds3 Pro" overlay="Redeem. Listen. Love." bg="#f5f0f8" />
 }
 
 function FridgeMockup() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: '#F4F6FA', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-      <div style={{ width: '100px', height: '200px', border: '2.5px solid #1428A0', borderRadius: '8px', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative', boxShadow: '0 4px 20px rgba(20,40,160,0.1)' }}>
-        <div style={{ flex: 1, display: 'flex' }}>
-          <div style={{ flex: 1, background: '#B2C9AD', borderRight: '1px solid #1428A0', borderBottom: '1px solid #1428A0' }} />
-          <div style={{ flex: 1, background: '#B2C9AD', borderBottom: '1px solid #1428A0' }} />
-        </div>
-        <div style={{ height: '38%', background: '#F5ECD7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ width: '32px', height: '1.5px', background: '#1428A0', opacity: 0.3 }} />
-        </div>
-        <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', fontSize: '0.4rem', fontWeight: 700, color: '#1428A0', letterSpacing: '0.12em', opacity: 0.4 }}>BESPOKE</span>
-      </div>
-      <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.78rem', marginTop: '12px' }}>Designed for you. Priced for your team.</span>
-    </div>
-  )
+  return <ProductImage src="/images/fridge.jpg" alt="Samsung Bespoke Fridge" overlay="Designed for you. Priced for your team." bg="#F4F6FA" />
 }
 
 /* ========== PERFORMANCE CARDS ========== */
@@ -273,77 +238,6 @@ function PerfCard({ visual, name, stats, badge, badgeClass }) {
         <h4 style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>{name}</h4>
         <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '8px' }}>{stats}</p>
         <span className={`badge ${badgeClass}`}>{badge}</span>
-      </div>
-    </div>
-  )
-}
-
-function MiniEmail() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: '#0A0F2C', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ width: '90px', height: '100px', background: 'white', borderRadius: '3px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}>
-        <div style={{ height: '24px', background: '#1428A0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ width: '20px', height: '30px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.3)', marginTop: '12px' }} />
-        </div>
-        <div style={{ padding: '6px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <div style={{ height: '3px', background: '#e0e2ea', borderRadius: '1px', width: '80%' }} />
-          <div style={{ height: '3px', background: '#e0e2ea', borderRadius: '1px', width: '60%' }} />
-          <div style={{ height: '3px', background: '#eee', borderRadius: '1px', width: '70%' }} />
-          <div style={{ height: '12px', background: '#00B2FF', borderRadius: '2px', marginTop: '4px' }} />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function MiniPush() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: '#1A1A2E', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ width: '110px' }}>
-        <div style={{ height: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '2px', width: '60px', margin: '0 auto 8px' }} />
-        <div style={{ background: 'rgba(255,255,255,0.08)', borderRadius: '8px', padding: '8px' }}>
-          <div style={{ display: 'flex', gap: '4px', alignItems: 'center', marginBottom: '6px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '2px', background: '#1428A0' }} />
-            <div style={{ height: '2px', background: 'rgba(255,255,255,0.2)', flex: 1, borderRadius: '1px' }} />
-          </div>
-          <div style={{ height: '2px', background: 'rgba(255,255,255,0.15)', borderRadius: '1px', marginBottom: '3px', width: '90%' }} />
-          <div style={{ height: '2px', background: 'rgba(255,255,255,0.1)', borderRadius: '1px', width: '70%' }} />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function MiniSMS() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: '#f0f1f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100px' }}>
-        <div style={{ background: '#e0e2ea', borderRadius: '12px 12px 12px 4px', padding: '8px 10px' }}>
-          <div style={{ height: '2px', background: '#bbb', borderRadius: '1px', marginBottom: '3px', width: '85%' }} />
-          <div style={{ height: '2px', background: '#ccc', borderRadius: '1px', width: '60%' }} />
-        </div>
-        <div style={{ background: '#1428A0', borderRadius: '12px 12px 4px 12px', padding: '8px 10px', alignSelf: 'flex-end' }}>
-          <div style={{ height: '2px', background: 'rgba(255,255,255,0.4)', borderRadius: '1px', width: '50px', marginBottom: '3px' }} />
-          <div style={{ height: '2px', background: 'rgba(255,255,255,0.25)', borderRadius: '1px', width: '35px' }} />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function MiniEmail2() {
-  return (
-    <div style={{ width: '100%', height: '100%', background: '#f8f9fc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ width: '90px', height: '100px', background: 'white', borderRadius: '3px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-        <div style={{ height: '8px', background: '#1428A0' }} />
-        <div style={{ padding: '6px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <div style={{ height: '3px', background: '#1428A0', borderRadius: '1px', width: '70%', opacity: 0.6 }} />
-          <div style={{ height: '3px', background: '#e0e2ea', borderRadius: '1px', width: '90%' }} />
-          <div style={{ height: '3px', background: '#e0e2ea', borderRadius: '1px', width: '75%' }} />
-          <div style={{ height: '3px', background: '#eee', borderRadius: '1px', width: '85%' }} />
-          <div style={{ height: '3px', background: '#eee', borderRadius: '1px', width: '50%' }} />
-          <div style={{ height: '14px', background: '#1428A0', borderRadius: '2px', marginTop: '4px' }} />
-        </div>
       </div>
     </div>
   )
