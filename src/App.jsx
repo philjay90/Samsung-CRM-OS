@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import PasswordGate from './components/PasswordGate'
 import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
 import Dashboard from './pages/Dashboard'
@@ -19,6 +20,7 @@ function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
 
   return (
+    <PasswordGate>
     <div className={`app-layout ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
       <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} />
       <div className="main-area">
@@ -41,6 +43,7 @@ function App() {
         </div>
       </div>
     </div>
+    </PasswordGate>
   )
 }
 
