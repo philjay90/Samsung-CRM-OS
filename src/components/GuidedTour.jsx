@@ -6,21 +6,21 @@ const STEPS = [
     route: '/rewards-epp',
     title: 'Rewards & EPP Hub',
     stepLabel: 'Where the program is losing people',
-    body: `Samsung has two high-value audiences — Rewards members and EPP participants — but they're managed separately and both have dropout problems. This hub is where we'd bring them together. It shows you where members are falling off, which EPP visitors hit a dead end at the eligibility wall, and what offers are working versus which ones are being ignored. The research question we're answering here is: where is the program losing people, and why?`,
+    body: `Samsung has two high-value audiences: Rewards members and EPP participants. But they're managed separately and both have dropout problems. This hub brings them together. It shows you where members are falling off, which EPP visitors hit a dead end at the eligibility wall, and what offers are working versus which ones are being ignored. The research question here is: where is the program losing people, and why?`,
     highlightSelector: '.page-container',
   },
   {
     route: '/customer-intelligence',
     title: 'Customer Intelligence Layer',
     stepLabel: 'Are SmartThings users more valuable?',
-    body: `SmartThings already gives Samsung a signal into how customers use their products at home — but that data lives outside the loyalty CRM. This layer pulls it in. We're trying to answer a simple but important question: are SmartThings users more valuable customers? If yes, that changes how we build the entire loyalty strategy. This is also where we'd start stitching anonymous site visitors to known profiles — turning invisible traffic into addressable audiences.`,
+    body: `SmartThings already gives Samsung a signal into how customers use their products at home, but that data lives outside the loyalty CRM. This layer pulls it in. We're trying to answer a simple but important question: are SmartThings users more valuable customers? If yes, that changes how we build the entire loyalty strategy. This is also where we stitch anonymous site visitors to known profiles, turning invisible traffic into addressable audiences.`,
     highlightSelector: '.page-container',
   },
   {
     route: '/rewards-epp',
     title: 'Offer Prioritization Matrix',
     stepLabel: 'Why people aren\'t making the jump',
-    body: `There's a dead zone in Samsung's tier structure — a big gap between the top free tier and the paid VIP membership, with nothing in between to pull people forward. This module helps us diagnose why people aren't making that jump. Is it awareness? Does the VIP value proposition not land? Is it just the wrong offer at the wrong moment? We use this to test bridge offers and measure what actually moves behavior versus what just feels good.`,
+    body: `There's a dead zone in Samsung's tier structure: a big gap between the top free tier and the paid VIP membership, with nothing in between to pull people forward. This module helps us diagnose why people aren't making that jump. Is it awareness? Does the VIP value proposition not land? Is it just the wrong offer at the wrong moment? We use this to test bridge offers and measure what actually moves behavior versus what just feels good.`,
     highlightSelector: '.section:nth-child(4)',
     scrollTo: true,
   },
@@ -28,7 +28,7 @@ const STEPS = [
     route: '/customer-intelligence',
     title: 'Anonymous Traffic Identity Mapping',
     stepLabel: 'Connecting visits to people',
-    body: `A lot of people visit Samsung.com without logging in. Samsung can see that traffic but can't act on it. This part of the platform monitors what we call the stitch rate — how often we're successfully connecting an anonymous visit to a known customer profile. That number tells us how effective the personalization on .com actually is, and where we're still leaving intent signals on the table.`,
+    body: `A lot of people visit Samsung.com without logging in. Samsung can see that traffic but can't act on it. This part of the platform monitors the stitch rate: how often we're successfully connecting an anonymous visit to a known customer profile. That number tells us how effective the personalization on .com actually is, and where we're still leaving intent signals on the table.`,
     highlightSelector: '.kpi-row',
   },
   {
@@ -42,7 +42,7 @@ const STEPS = [
     route: '/experimentation',
     title: 'Experimentation & Value Validation',
     stepLabel: 'Proof that the right moves are working',
-    body: `Everything we've looked at so far generates hypotheses. This is where we test them. We run holdout groups, measure incrementality, and track which interventions actually grow customer value versus which ones just generate short-term noise. This is also how we build the internal case at Samsung — because Brian needs proof that the right moves are working, not just activity metrics.`,
+    body: `Everything we've looked at so far generates hypotheses. This is where we test them. We run holdout groups, measure incrementality, and track which interventions actually grow customer value versus which ones just generate short-term noise. This is also how we build the internal case at Samsung, because Brian needs proof that the right moves are working, not just activity metrics.`,
     highlightSelector: '.page-container',
   },
 ]
@@ -76,7 +76,6 @@ export default function GuidedTour({ active, onClose }) {
   }, [navigate])
 
   useEffect(() => {
-    // Only reset when active transitions from false to true
     if (active && !prevActive.current) {
       setStep(0)
       setVisible(true)
@@ -99,18 +98,6 @@ export default function GuidedTour({ active, onClose }) {
 
   return (
     <>
-      {/* Overlay */}
-      <div style={{
-        position: 'fixed',
-        inset: 0,
-        background: 'rgba(10, 15, 44, 0.55)',
-        backdropFilter: 'blur(2px)',
-        zIndex: 900,
-        opacity: visible && !animating ? 1 : 0,
-        transition: 'opacity 0.3s ease',
-        pointerEvents: 'none',
-      }} />
-
       {/* Skip Tour */}
       <button
         onClick={onClose}
@@ -119,10 +106,10 @@ export default function GuidedTour({ active, onClose }) {
           top: '16px',
           right: '16px',
           zIndex: 1001,
-          background: 'rgba(255,255,255,0.12)',
+          background: 'rgba(10, 15, 44, 0.85)',
           backdropFilter: 'blur(8px)',
           color: 'white',
-          border: '1px solid rgba(255,255,255,0.2)',
+          border: '1px solid rgba(255,255,255,0.15)',
           borderRadius: '20px',
           padding: '6px 16px',
           fontSize: '0.78rem',
@@ -131,13 +118,13 @@ export default function GuidedTour({ active, onClose }) {
           transition: 'all 0.15s',
           fontFamily: 'var(--font-body)',
         }}
-        onMouseEnter={e => { e.target.style.background = 'rgba(255,255,255,0.22)' }}
-        onMouseLeave={e => { e.target.style.background = 'rgba(255,255,255,0.12)' }}
+        onMouseEnter={e => { e.target.style.background = 'rgba(10, 15, 44, 0.95)' }}
+        onMouseLeave={e => { e.target.style.background = 'rgba(10, 15, 44, 0.85)' }}
       >
         Skip tour ×
       </button>
 
-      {/* Tour Panel — bottom right */}
+      {/* Tour Panel */}
       <div style={{
         position: 'fixed',
         bottom: '24px',
@@ -253,7 +240,7 @@ export default function GuidedTour({ active, onClose }) {
                 transition: 'all 0.15s',
               }}
             >
-              ← Back
+              Back
             </button>
 
             <div style={{
@@ -303,7 +290,7 @@ export default function GuidedTour({ active, onClose }) {
               onMouseEnter={e => { e.target.style.filter = 'brightness(1.15)' }}
               onMouseLeave={e => { e.target.style.filter = 'none' }}
             >
-              {isLast ? 'Finish ✓' : 'Next →'}
+              {isLast ? 'Finish' : 'Next'}
             </button>
           </div>
         </div>
