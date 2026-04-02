@@ -1,3 +1,5 @@
+import InfoTooltip from '../components/InfoTooltip'
+
 export default function JourneyOrchestration() {
   return (
     <div className="page-container">
@@ -9,12 +11,12 @@ export default function JourneyOrchestration() {
       {/* Stat Cards */}
       <div className="kpi-row" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
         <div className="kpi-card">
-          <div className="kpi-label">Active Journeys</div>
+          <div className="kpi-label">Active Journeys <InfoTooltip text="Total automated customer journeys currently running across all lines of business. Each journey is a multi-step communication sequence triggered by customer behavior." /></div>
           <div className="kpi-value">24</div>
           <div className="kpi-delta neutral">Across 4 LOBs</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Contact Budget Utilization</div>
+          <div className="kpi-label">Contact Budget Utilization <InfoTooltip text="Percentage of your monthly communication budget consumed. Staying under 100% prevents oversaturation. In a value-based model, lower utilization with higher impact is the goal." /></div>
           <div className="kpi-value">71%</div>
           <div style={{ marginTop: '8px' }}>
             <div className="progress-bar">
@@ -23,7 +25,7 @@ export default function JourneyOrchestration() {
           </div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Messages Suppressed This Week</div>
+          <div className="kpi-label">Messages Suppressed This Week <InfoTooltip text="Communications blocked by fatigue rules, frequency caps, or cross-LOB deduplication. Higher suppression = the system is actively protecting customer relationships." /></div>
           <div className="kpi-value">48,200</div>
           <div className="kpi-delta positive">Fatigue protection active</div>
         </div>
@@ -31,7 +33,7 @@ export default function JourneyOrchestration() {
 
       {/* Cross-LOB Journey Map */}
       <div className="section">
-        <h3 className="section-title">Cross-LOB Journey Map</h3>
+        <h3 className="section-title">Cross-LOB Journey Map <InfoTooltip text="Visual map of where active journey touchpoints exist across product lines and lifecycle stages. Gaps indicate opportunities; clusters may signal oversaturation risks." /></h3>
         <div className="card" style={{ overflowX: 'auto' }}>
           <SwimLaneMap />
         </div>
@@ -39,7 +41,7 @@ export default function JourneyOrchestration() {
 
       {/* Priority Resolution Queue */}
       <div className="section">
-        <h3 className="section-title">Priority Resolution Queue</h3>
+        <h3 className="section-title">Priority Resolution Queue <InfoTooltip text="When multiple LOBs want to reach the same customer at the same time, conflicts are flagged here. The system resolves based on CLV impact, fatigue scores, and business priority." /></h3>
         <div className="card">
           <table className="data-table">
             <thead>
@@ -80,7 +82,7 @@ export default function JourneyOrchestration() {
 
       {/* Rules & Triggers Library */}
       <div className="section">
-        <h3 className="section-title">Rules & Triggers Library</h3>
+        <h3 className="section-title">Rules & Triggers Library <InfoTooltip text="The library of events that can trigger journey communications. Active rules are live; Draft rules are being tested before deployment." /></h3>
         <div className="card">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
             {[

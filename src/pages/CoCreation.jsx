@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import InfoTooltip from '../components/InfoTooltip'
 
 const useCases = [
   { id: 1, title: 'EPP Early Access Launch — Galaxy S25 Ultra', status: 'Building', tag: 'badge-info' },
@@ -22,7 +23,7 @@ export default function CoCreation() {
     <div className="page-container">
       <div className="page-header">
         <h1 className="page-title">Cross-Functional Co-Creation Workspace</h1>
-        <p className="page-subtitle">Samsung and WONGDOODY build the loyalty roadmap together</p>
+        <p className="page-subtitle">Samsung and WONGDOODY build the loyalty roadmap together <InfoTooltip text="A shared workspace where CRM strategy, creative, legal, and engineering collaborate on loyalty initiatives — from brief through launch." /></p>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(220px, 280px) minmax(0, 1fr) minmax(220px, 300px)', gap: 'var(--sp-5)', minHeight: '600px' }}>

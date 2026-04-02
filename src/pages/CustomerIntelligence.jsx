@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import InfoTooltip from '../components/InfoTooltip'
 
 export default function CustomerIntelligence() {
   const [activeFilter, setActiveFilter] = useState('All')
@@ -31,20 +32,20 @@ export default function CustomerIntelligence() {
 
       {/* Unified Customer Signals */}
       <div className="section">
-        <h3 className="section-title">Unified Customer Signals</h3>
+        <h3 className="section-title">Unified Customer Signals <InfoTooltip text="Aggregated behavioral and identity data across all Samsung product lines and loyalty programs. These signals power segmentation, propensity models, and fatigue management." /></h3>
         <div className="kpi-row" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
           <div className="kpi-card">
-            <div className="kpi-label">Anonymous → Known Stitch Rate</div>
+            <div className="kpi-label">Anonymous → Known Stitch Rate <InfoTooltip text="The percentage of anonymous site/app visitors successfully matched to known customer profiles. Higher stitch rates mean better personalization and less wasted outreach." /></div>
             <div className="kpi-value">68.4%</div>
             <div className="kpi-delta positive">&#9650; +2.1% this quarter</div>
           </div>
           <div className="kpi-card">
-            <div className="kpi-label">Avg Lifecycle Stage Score</div>
+            <div className="kpi-label">Avg Lifecycle Stage Score <InfoTooltip text="A composite score (1-10) indicating where the average customer sits in their journey. Higher scores mean a more mature, engaged customer base." /></div>
             <div className="kpi-value">7.1 / 10</div>
             <div className="kpi-delta positive">&#9650; +0.3 vs Q3</div>
           </div>
           <div className="kpi-card">
-            <div className="kpi-label">Oversaturated Customers (Fatigue &gt;8)</div>
+            <div className="kpi-label">Oversaturated Customers (Fatigue &gt;8) <InfoTooltip text="Customers with a fatigue score above 8 — they're receiving too many communications and are at high risk of unsubscribing or disengaging. This number should be trending down." /></div>
             <div className="kpi-value">142K</div>
             <div className="kpi-delta positive">&#9660; -18K vs last month</div>
           </div>
@@ -53,7 +54,7 @@ export default function CustomerIntelligence() {
 
       {/* Propensity Model Library */}
       <div className="section">
-        <h3 className="section-title">Propensity Model Library</h3>
+        <h3 className="section-title">Propensity Model Library <InfoTooltip text="Pre-built AI models that predict customer likelihood to take specific actions. Accuracy scores reflect how well each model predicts outcomes on holdout test data." /></h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--sp-5)' }}>
           {[
             { name: 'Buy Propensity Model', updated: '3d ago', accuracy: 84, color: 'var(--samsung-blue)' },
@@ -83,7 +84,7 @@ export default function CustomerIntelligence() {
 
       {/* Audience Builder */}
       <div className="section">
-        <h3 className="section-title">Audience Builder</h3>
+        <h3 className="section-title">Audience Builder <InfoTooltip text="Combine behavioral signals, loyalty data, and fatigue scores to build targeted segments. The estimated audience updates in real-time as you add conditions." /></h3>
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '20px' }}>
             <LogicBlock label="Product Ownership" value="Galaxy S-Series" color="var(--samsung-blue)" />

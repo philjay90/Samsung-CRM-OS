@@ -1,3 +1,5 @@
+import InfoTooltip from '../components/InfoTooltip'
+
 export default function Dashboard() {
   const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 
@@ -8,74 +10,58 @@ export default function Dashboard() {
         <p className="page-subtitle">{today}</p>
       </div>
 
-      {/* Primary KPIs — the shift from volume to value */}
+      {/* Primary KPIs */}
       <div className="kpi-row">
         <div className="kpi-card" style={{ borderLeft: '4px solid var(--accent)' }}>
-          <div className="kpi-label">Contact Fatigue Index</div>
+          <div className="kpi-label">Contact Fatigue Index <InfoTooltip text="Your primary guardrail for the volume-to-value shift. CFI measures how oversaturated customers feel. As you reduce frequency, declining CFI across cohorts is your earliest proof the model is working — before CLV even moves." /></div>
           <div className="kpi-value">5.8 / 10</div>
           <div className="kpi-delta positive">&#9660; -1.2 vs 90 days ago</div>
-          <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '4px' }}>Primary operational guardrail</p>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Revenue Per Communication</div>
+          <div className="kpi-label">Revenue Per Communication <InfoTooltip text="If you're sending less, each send needs to work harder. This tracks revenue attributable per outbound touchpoint. Rising RPC means quality is genuinely replacing quantity — not just sending less and getting less." /></div>
           <div className="kpi-value">$4.82</div>
           <div className="kpi-delta positive">&#9650; +$1.14 vs last quarter</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Avg CLV (Rewards)</div>
+          <div className="kpi-label">Avg CLV (Rewards) <InfoTooltip text="The north star metric. CLV takes 6-12 months to shift visibly, so use CFI and RPC to carry the narrative in the interim. A rising CLV confirms the strategy is defensible at leadership level." /></div>
           <div className="kpi-value">$1,840</div>
           <div className="kpi-delta positive">&#9650; +$112 vs last period</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Unsubscribe Rate (30d)</div>
+          <div className="kpi-label">Unsubscribe Rate (30d) <InfoTooltip text="A lagging indicator, but important for leadership. As CFI drops and frequency decreases, unsubscribes should follow. This is your clearest before/after signal that the strategy shift is reducing damage to your audience asset." /></div>
           <div className="kpi-value">0.34%</div>
           <div className="kpi-delta positive">&#9660; -0.18pp vs pre-shift</div>
         </div>
       </div>
 
-      {/* CLV Trajectory — the business case chart */}
+      {/* CLV Trajectory */}
       <div className="section">
         <div className="card">
-          <div className="card-title">CLV Trajectory by Engagement Cohort</div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '16px', marginTop: '-8px' }}>
-            Low-frequency model vs. legacy high-frequency group — the business case in one chart
-          </p>
+          <div className="card-title">CLV Trajectory by Engagement Cohort <InfoTooltip text="The business case in one chart. Compares the CLV trend of customers in your low-frequency model vs. the legacy high-frequency group. The widening gap is what makes the strategic shift defensible to a VP of CRM." /></div>
           <CLVTrajectoryChart />
         </div>
       </div>
 
-      {/* CFI Trend + Revenue Per Comm */}
+      {/* CFI Trend + Engagement by Type */}
       <div className="two-col section">
         <div className="card">
-          <div className="card-title">CFI Trend by Cohort</div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '12px', marginTop: '-8px' }}>
-            Declining CFI = proof the model is working before CLV moves
-          </p>
+          <div className="card-title">CFI Trend by Cohort <InfoTooltip text="Tracks fatigue declining across your key customer segments. CFI is a leading indicator — it moves before CLV does. Showing downward trends here helps you defend the strategy during the window before revenue impact is visible." /></div>
           <CFITrendChart />
         </div>
         <div className="card">
-          <div className="card-title">Engagement Rate by Communication Type</div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '12px', marginTop: '-8px' }}>
-            Which outreach types are driving real behavior — not vanity opens
-          </p>
+          <div className="card-title">Engagement Rate by Communication Type <InfoTooltip text="Not open rate — that's a vanity metric at scale. This shows which types of outreach actually drive behavior (trade-ins, upsells, loyalty offers). Tells you where to concentrate the fewer touches you're now making." /></div>
           <EngagementByType />
         </div>
       </div>
 
-      {/* Ecosystem Depth + List Health */}
+      {/* Ecosystem Depth + Relationship Health */}
       <div className="two-col section">
         <div className="card">
-          <div className="card-title">Ecosystem / Cross-Category Depth</div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '12px', marginTop: '-8px' }}>
-            Fewer but relevant comms → higher cross-category attach (6-12mo window)
-          </p>
+          <div className="card-title">Ecosystem / Cross-Category Depth <InfoTooltip text="The long-game CLV driver. As you shift from spray-and-pray to relevance-based outreach, customers receiving fewer but better comms should show higher cross-category attach rates over a 6-12 month window." /></div>
           <EcosystemDepth />
         </div>
         <div className="card">
-          <div className="card-title">Relationship Health Indicators</div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '12px', marginTop: '-8px' }}>
-            Lagging signals confirming the strategy shift is reducing asset damage
-          </p>
+          <div className="card-title">Relationship Health Indicators <InfoTooltip text="Lagging signals that confirm the strategy shift is reducing damage to your audience asset. Improving list health, falling spam complaints, and rising consent rates are your proof points for stakeholders." /></div>
           <RelationshipHealth />
         </div>
       </div>
@@ -83,17 +69,11 @@ export default function Dashboard() {
       {/* Upgrade Velocity + Reactivation */}
       <div className="two-col section">
         <div className="card">
-          <div className="card-title">Upgrade Cycle Velocity</div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '12px', marginTop: '-8px' }}>
-            Healthier upgrade cycles vs. volume-pressured premature upgrades
-          </p>
+          <div className="card-title">Upgrade Cycle Velocity <InfoTooltip text="Your medium-term CLV proxy. If the value-based approach is working, customers upgrade on a healthier, more engaged cycle rather than being pushed into premature upgrades by volume pressure. Longer ≠ worse — it means organic intent." /></div>
           <UpgradeVelocity />
         </div>
         <div className="card">
-          <div className="card-title">Reactivation Rate — Lapsed Segments</div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '12px', marginTop: '-8px' }}>
-            Previously fatigued contacts recovered with low-freq high-relevance model
-          </p>
+          <div className="card-title">Reactivation Rate — Lapsed Segments <InfoTooltip text="The contacts you previously fatigued into dormancy are a recoverable asset. This tracks whether your new low-frequency, high-relevance model can win back disengaged customers — turning past damage into future value." /></div>
           <ReactivationRate />
         </div>
       </div>
@@ -116,7 +96,7 @@ function CLVTrajectoryChart() {
   const x = (i) => pad.left + (i / (months.length - 1)) * cW
   const y = (v) => pad.top + (1 - (v - min) / (max - min)) * cH
 
-  const path = (data) => data.map((v, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(v)}`).join(' ')
+  const pathD = (data) => data.map((v, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(v)}`).join(' ')
 
   return (
     <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ maxWidth: '100%' }}>
@@ -129,29 +109,18 @@ function CLVTrajectoryChart() {
       {months.map((m, i) => (
         <text key={m} x={x(i)} y={h - 8} textAnchor="middle" style={{ fontSize: '9px', fill: 'var(--text-muted)' }}>{m}</text>
       ))}
-
-      {/* Shift marker */}
       <line x1={x(3)} y1={pad.top} x2={x(3)} y2={pad.top + cH} stroke="var(--accent)" strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
       <text x={x(3) + 4} y={pad.top + 12} style={{ fontSize: '8px', fill: 'var(--accent)', fontWeight: 600 }}>Strategy shift</text>
-
-      {/* High-freq line (declining) */}
-      <path d={path(highFreq)} fill="none" stroke="var(--danger)" strokeWidth="2" strokeDasharray="6 3" opacity="0.7" />
-      {/* Low-freq line (rising) */}
-      <path d={path(lowFreq)} fill="none" stroke="var(--success)" strokeWidth="2.5" />
-
-      {/* End labels */}
+      <path d={pathD(highFreq)} fill="none" stroke="var(--danger)" strokeWidth="2" strokeDasharray="6 3" opacity="0.7" />
+      <path d={pathD(lowFreq)} fill="none" stroke="var(--success)" strokeWidth="2.5" />
       <circle cx={x(8)} cy={y(lowFreq[8])} r="4" fill="var(--success)" />
       <text x={x(8) + 10} y={y(lowFreq[8]) + 4} style={{ fontSize: '9px', fill: 'var(--success)', fontWeight: 600 }}>$1,905</text>
       <circle cx={x(8)} cy={y(highFreq[8])} r="4" fill="var(--danger)" />
       <text x={x(8) + 10} y={y(highFreq[8]) + 4} style={{ fontSize: '9px', fill: 'var(--danger)', fontWeight: 600 }}>$1,645</text>
-
-      {/* Legend */}
       <circle cx={w - pad.right + 10} cy={pad.top + 10} r="4" fill="var(--success)" />
       <text x={w - pad.right + 18} y={pad.top + 14} style={{ fontSize: '8px', fill: 'var(--text-secondary)' }}>Low-freq</text>
       <circle cx={w - pad.right + 10} cy={pad.top + 28} r="4" fill="var(--danger)" />
       <text x={w - pad.right + 18} y={pad.top + 32} style={{ fontSize: '8px', fill: 'var(--text-secondary)' }}>High-freq</text>
-
-      {/* Gap annotation */}
       <text x={(x(5) + x(8)) / 2} y={y((lowFreq[6] + highFreq[6]) / 2) + 4} textAnchor="middle" style={{ fontSize: '9px', fill: 'var(--samsung-blue)', fontWeight: 700 }}>+$260 CLV gap</text>
     </svg>
   )
@@ -219,7 +188,6 @@ function EngagementByType() {
           <span style={{ fontSize: '0.78rem', fontWeight: 600, color: t.trend === 'negative' ? 'var(--danger)' : 'var(--success)' }}>{t.revenue}</span>
         </div>
       ))}
-      <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '4px' }}>General promos flagged — low ROI, high fatigue contributor</p>
     </div>
   )
 }
@@ -310,7 +278,6 @@ function UpgradeVelocity() {
           <span className={`badge ${l.health === 'Healthier' ? 'badge-success' : 'badge-neutral'}`} style={{ flexShrink: 0 }}>{l.health}</span>
         </div>
       ))}
-      <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '2px' }}>Longer cycles = organic engagement, not volume-pressured premature upgrades</p>
     </div>
   )
 }

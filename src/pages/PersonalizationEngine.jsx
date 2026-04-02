@@ -1,4 +1,5 @@
 import React from 'react'
+import InfoTooltip from '../components/InfoTooltip'
 
 export default function PersonalizationEngine() {
   return (
@@ -11,22 +12,22 @@ export default function PersonalizationEngine() {
       {/* KPI Row */}
       <div className="kpi-row">
         <div className="kpi-card">
-          <div className="kpi-label">Personalized Touchpoints (MTD)</div>
+          <div className="kpi-label">Personalized Touchpoints (MTD) <InfoTooltip text="Total AI-personalized messages sent month-to-date. The +18% vs static sends shows the lift from personalization — but volume should still be governed by fatigue rules." /></div>
           <div className="kpi-value">8.4M</div>
           <div className="kpi-delta positive">&#9650; +18% vs static sends</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">AI Content Variants Active</div>
+          <div className="kpi-label">AI Content Variants Active <InfoTooltip text="Number of distinct AI-generated content variations currently in rotation across campaigns. More variants enable better targeting but require governance oversight." /></div>
           <div className="kpi-value">342</div>
           <div className="kpi-delta neutral">Across 12 campaigns</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Avg Engagement Lift (AI vs Control)</div>
+          <div className="kpi-label">Avg Engagement Lift (AI vs Control) <InfoTooltip text="The average improvement in open/click rates when AI-personalized content is used vs. static control versions. This proves the personalization engine is adding real value." /></div>
           <div className="kpi-value">+23%</div>
           <div className="kpi-delta positive">Open rate uplift</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Next-Best-Action Coverage</div>
+          <div className="kpi-label">Next-Best-Action Coverage <InfoTooltip text="Percentage of customer touchpoints being guided by the NBA engine rather than manual rules. Higher coverage means more decisions are data-driven." /></div>
           <div className="kpi-value">76%</div>
           <div style={{ marginTop: '8px' }}>
             <div className="progress-bar">
@@ -42,7 +43,7 @@ export default function PersonalizationEngine() {
           <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)">
             <path d="M8 0l2 5h5l-4 3 1.5 5L8 10l-4.5 3L5 8 1 5h5z"/>
           </svg>
-          AI Content Optimization
+          AI Content Optimization <InfoTooltip text="Tracks AI-driven content testing across campaigns. The engine automatically generates and tests subject lines, body copy, and CTAs, then promotes winners." />
         </h3>
         <div className="card">
           <table className="data-table">
@@ -81,18 +82,18 @@ export default function PersonalizationEngine() {
       {/* Send-Time Optimization + Channel Preference */}
       <div className="two-col section">
         <div className="card">
-          <div className="card-title">Send-Time Optimization Heatmap</div>
+          <div className="card-title">Send-Time Optimization Heatmap <InfoTooltip text="Shows when customers are most likely to engage, by day and hour. Darker cells indicate higher historical open/click rates — the engine uses this to schedule sends." /></div>
           <SendTimeHeatmap />
         </div>
         <div className="card">
-          <div className="card-title">Channel Preference Distribution</div>
+          <div className="card-title">Channel Preference Distribution <InfoTooltip text="How customers prefer to be reached, based on their actual engagement patterns — not their stated preferences. Used to route messages to the highest-response channel." /></div>
           <ChannelPreference />
         </div>
       </div>
 
       {/* Next-Best-Action Engine */}
       <div className="section">
-        <h3 className="section-title">Next-Best-Action Recommendations</h3>
+        <h3 className="section-title">Next-Best-Action Recommendations <InfoTooltip text="AI-generated recommendations for what to say next to each customer segment, based on propensity models, lifecycle stage, and fatigue scores. Confidence percentage indicates model certainty." /></h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--sp-5)' }}>
           {[
             { segment: 'High-Value Mobile Upgraders', action: 'Serve Galaxy S25 Ultra early access', confidence: 94, reason: 'Strong buy propensity + loyalty tier match' },

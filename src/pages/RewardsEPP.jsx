@@ -1,4 +1,5 @@
 import React from 'react'
+import InfoTooltip from '../components/InfoTooltip'
 
 export default function RewardsEPP() {
   return (
@@ -11,22 +12,22 @@ export default function RewardsEPP() {
       {/* KPI Row */}
       <div className="kpi-row">
         <div className="kpi-card">
-          <div className="kpi-label">Total Rewards Points Issued (MTD)</div>
+          <div className="kpi-label">Total Rewards Points Issued (MTD) <InfoTooltip text="Month-to-date points distributed across the Rewards program. Tracks the cost side of the loyalty equation." /></div>
           <div className="kpi-value">1.2B</div>
           <div className="kpi-delta neutral">On pace with forecast</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">EPP Conversion Rate</div>
+          <div className="kpi-label">EPP Conversion Rate <InfoTooltip text="Percentage of EPP-eligible users who have actually made a purchase through the program. Measures how effectively you're converting eligibility into revenue." /></div>
           <div className="kpi-value">34.7%</div>
           <div className="kpi-delta positive">&#9650; +2.1% vs last period</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Offers Suppressed (Overlap Prevention)</div>
+          <div className="kpi-label">Offers Suppressed (Overlap Prevention) <InfoTooltip text="Offers blocked because a customer was already receiving a competing offer from another LOB. Prevents offer cannibalization and fatigue." /></div>
           <div className="kpi-value">22,400</div>
           <div className="kpi-delta positive">Cross-LOB dedup active</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">VIP Members (Top Tier)</div>
+          <div className="kpi-label">VIP Members (Top Tier) <InfoTooltip text="Top-tier loyalty members who drive disproportionate CLV. Growing this segment organically (not through discount incentives) is a key goal." /></div>
           <div className="kpi-value">87,500</div>
           <div className="kpi-delta positive">&#9650; +4.2% QoQ</div>
         </div>
@@ -34,7 +35,7 @@ export default function RewardsEPP() {
 
       {/* EPP Eligibility Engine */}
       <div className="section">
-        <h3 className="section-title">EPP Eligibility Engine</h3>
+        <h3 className="section-title">EPP Eligibility Engine <InfoTooltip text="Manages the three EPP enrollment segments. Eligible users are verified against employer, military, or education databases and can access exclusive Samsung pricing." /></h3>
         <div className="three-col">
           {[
             { segment: 'Corporate Accounts', eligible: '441K', icon: '🏢', color: 'var(--samsung-blue)' },
@@ -53,7 +54,7 @@ export default function RewardsEPP() {
 
       {/* Offer Prioritization Matrix */}
       <div className="section">
-        <h3 className="section-title">Offer Prioritization Matrix</h3>
+        <h3 className="section-title">Offer Prioritization Matrix <InfoTooltip text="Shows which offer types have the strongest fit for each customer segment. Higher scores (darker blue) indicate better predicted response rates and CLV impact." /></h3>
         <div className="card" style={{ overflowX: 'auto' }}>
           <HeatmapGrid />
         </div>
@@ -61,7 +62,7 @@ export default function RewardsEPP() {
 
       {/* VIP Tier Framework */}
       <div className="section">
-        <h3 className="section-title">VIP Tier Framework</h3>
+        <h3 className="section-title">VIP Tier Framework <InfoTooltip text="The three loyalty tiers with their key benefits and fill rates. Tier progression should be earned through engagement, not purchased through discounting." /></h3>
         <div className="three-col">
           {[
             { tier: 'Samsung Insider', members: '52,300', benefit: 'Early Access to Product Launches', fill: 65, color: '#8b95a5' },

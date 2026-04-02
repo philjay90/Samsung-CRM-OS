@@ -1,3 +1,5 @@
+import InfoTooltip from '../components/InfoTooltip'
+
 export default function Experimentation() {
   return (
     <div className="page-container">
@@ -9,17 +11,17 @@ export default function Experimentation() {
       {/* KPI Row */}
       <div className="kpi-row" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
         <div className="kpi-card">
-          <div className="kpi-label">Active Tests</div>
+          <div className="kpi-label">Active Tests <InfoTooltip text="Running experiments across the CRM program. A healthy experimentation velocity is 6-10 concurrent tests. Fewer suggests under-investment; more may dilute statistical power." /></div>
           <div className="kpi-value">8</div>
           <div className="kpi-delta neutral">Across 3 LOBs</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">CLV Lift Attributed (QTD)</div>
+          <div className="kpi-label">CLV Lift Attributed (QTD) <InfoTooltip text="Quarter-to-date incremental CLV proven through controlled experiments. This is the value your experimentation program has provably created." /></div>
           <div className="kpi-value" style={{ color: 'var(--success)' }}>+$4.2M</div>
           <div className="kpi-delta positive">&#9650; Incremental value proven</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-label">Holdout Group Coverage</div>
+          <div className="kpi-label">Holdout Group Coverage <InfoTooltip text="Percentage of audience held back from campaigns to measure true incrementality. 10-15% is the sweet spot — enough for statistical validity without sacrificing too much reach." /></div>
           <div className="kpi-value">12%</div>
           <div className="kpi-delta neutral">Of total addressable audience</div>
         </div>
@@ -27,7 +29,7 @@ export default function Experimentation() {
 
       {/* Incrementality Dashboard */}
       <div className="section">
-        <h3 className="section-title">Incrementality Dashboard</h3>
+        <h3 className="section-title">Incrementality Dashboard <InfoTooltip text="Each experiment's real contribution measured against a control group. 'Winner Found' means the variant provably outperforms — it should be scaled. 'Inconclusive' means more data is needed." /></h3>
         <div className="card">
           <table className="data-table">
             <thead>
@@ -63,7 +65,7 @@ export default function Experimentation() {
 
       {/* Contact Budget Performance */}
       <div className="section">
-        <h3 className="section-title">Contact Budget Performance</h3>
+        <h3 className="section-title">Contact Budget Performance <InfoTooltip text="The core proof point for the volume-to-value shift: as messages sent decrease, CLV index increases. The inflection point marks when the new model began outperforming the old." /></h3>
         <div className="card">
           <ContactBudgetChart />
         </div>
@@ -71,7 +73,7 @@ export default function Experimentation() {
 
       {/* Offer Optimization */}
       <div className="section">
-        <h3 className="section-title">Offer Optimization</h3>
+        <h3 className="section-title">Offer Optimization <InfoTooltip text="Side-by-side comparison of offer strategies. Short-term revenue spikes often destroy long-term CLV through discount conditioning and fatigue. CLV-positive offers build sustainable value." /></h3>
         <div className="two-col">
           <div className="card" style={{ borderTop: '3px solid var(--danger)' }}>
             <div className="card-title" style={{ color: 'var(--danger)' }}>Short-Term Revenue Spike Offers</div>

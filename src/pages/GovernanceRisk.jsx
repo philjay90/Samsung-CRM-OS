@@ -1,3 +1,5 @@
+import InfoTooltip from '../components/InfoTooltip'
+
 export default function GovernanceRisk() {
   return (
     <div className="page-container">
@@ -9,17 +11,17 @@ export default function GovernanceRisk() {
       {/* Alert Cards */}
       <div className="kpi-row" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
         <div className="kpi-card" style={{ borderLeft: '4px solid var(--warning)' }}>
-          <div className="kpi-label">Pending DPIA Reviews</div>
+          <div className="kpi-label">Pending DPIA Reviews <InfoTooltip text="Data Protection Impact Assessments awaiting review. Required before launching campaigns that process personal data in new ways. Delays here block campaign launches." /></div>
           <div className="kpi-value">3</div>
           <span className="badge badge-warning">Action Required</span>
         </div>
         <div className="kpi-card" style={{ borderLeft: '4px solid var(--success)' }}>
-          <div className="kpi-label">Consent Flag Rate</div>
+          <div className="kpi-label">Consent Flag Rate <InfoTooltip text="Percentage of outbound messages flagged for consent issues. Below 3% is healthy; above 5% requires immediate review of consent collection processes." /></div>
           <div className="kpi-value">2.1%</div>
           <span className="badge badge-success">Within Threshold</span>
         </div>
         <div className="kpi-card" style={{ borderLeft: '4px solid var(--warning)' }}>
-          <div className="kpi-label">AI Risk Level (Active Models)</div>
+          <div className="kpi-label">AI Risk Level (Active Models) <InfoTooltip text="Aggregate risk assessment across all active AI models. Flagged models require audit before continued use — typically due to bias concerns, data drift, or regulatory exposure." /></div>
           <div className="kpi-value">Medium</div>
           <span className="badge badge-warning">2 Flagged</span>
         </div>
@@ -27,7 +29,7 @@ export default function GovernanceRisk() {
 
       {/* AI Governance Dashboard */}
       <div className="section">
-        <h3 className="section-title">AI Governance Dashboard</h3>
+        <h3 className="section-title">AI Governance Dashboard <InfoTooltip text="Tracks every AI model in production with its use case, risk level, last audit date, and approval status. Models flagged as High risk require remediation before continued deployment." /></h3>
         <div className="card">
           <table className="data-table">
             <thead>
@@ -69,7 +71,7 @@ export default function GovernanceRisk() {
 
       {/* Consent & Preference Manager */}
       <div className="section">
-        <h3 className="section-title">Consent & Preference Manager</h3>
+        <h3 className="section-title">Consent & Preference Manager <InfoTooltip text="Real-time view of customer communication consent across channels. The donut shows current opt-in rates; the timeline shows recent changes that may need attention." /></h3>
         <div className="two-col">
           <div className="card">
             <div className="card-title">Consent Breakdown</div>
@@ -106,7 +108,7 @@ export default function GovernanceRisk() {
 
       {/* Policy Versioning */}
       <div className="section">
-        <h3 className="section-title">Policy Versioning</h3>
+        <h3 className="section-title">Policy Versioning <InfoTooltip text="Tracks privacy policy versions by region and upcoming regulatory changes. Ensures CRM campaigns comply with the correct policy version in each market." /></h3>
         <div className="card">
           <table className="data-table">
             <thead>
