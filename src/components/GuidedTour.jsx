@@ -98,32 +98,6 @@ export default function GuidedTour({ active, onClose }) {
 
   return (
     <>
-      {/* Skip Tour */}
-      <button
-        onClick={onClose}
-        style={{
-          position: 'fixed',
-          top: '16px',
-          right: '16px',
-          zIndex: 1001,
-          background: 'rgba(10, 15, 44, 0.85)',
-          backdropFilter: 'blur(8px)',
-          color: 'white',
-          border: '1px solid rgba(255,255,255,0.15)',
-          borderRadius: '20px',
-          padding: '6px 16px',
-          fontSize: '0.78rem',
-          fontWeight: 500,
-          cursor: 'pointer',
-          transition: 'all 0.15s',
-          fontFamily: 'var(--font-body)',
-        }}
-        onMouseEnter={e => { e.target.style.background = 'rgba(10, 15, 44, 0.95)' }}
-        onMouseLeave={e => { e.target.style.background = 'rgba(10, 15, 44, 0.85)' }}
-      >
-        Skip tour ×
-      </button>
-
       {/* Tour Panel */}
       <div style={{
         position: 'fixed',
@@ -160,7 +134,35 @@ export default function GuidedTour({ active, onClose }) {
           border: '1px solid rgba(255,255,255,0.08)',
           boxShadow: '0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,178,255,0.1)',
           overflow: 'hidden',
+          position: 'relative',
         }}>
+          {/* Close X */}
+          <button
+            onClick={onClose}
+            style={{
+              position: 'absolute',
+              top: '12px',
+              right: '12px',
+              zIndex: 2,
+              width: '28px',
+              height: '28px',
+              borderRadius: '50%',
+              background: 'rgba(255,255,255,0.08)',
+              border: 'none',
+              color: 'rgba(255,255,255,0.5)',
+              fontSize: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.15s',
+              lineHeight: 1,
+              padding: 0,
+            }}
+            onMouseEnter={e => { e.target.style.background = 'rgba(255,255,255,0.18)'; e.target.style.color = 'white' }}
+            onMouseLeave={e => { e.target.style.background = 'rgba(255,255,255,0.08)'; e.target.style.color = 'rgba(255,255,255,0.5)' }}
+          >×</button>
+
           {/* Header */}
           <div style={{
             padding: '20px 24px 16px',
@@ -181,13 +183,6 @@ export default function GuidedTour({ active, onClose }) {
                 fontFamily: 'var(--font-body)',
               }}>
                 Step {step + 1} of {STEPS.length}
-              </span>
-              <span style={{
-                fontSize: '0.68rem',
-                color: 'rgba(255,255,255,0.4)',
-                fontFamily: 'var(--font-body)',
-              }}>
-                {current.stepLabel}
               </span>
             </div>
             <h3 style={{
