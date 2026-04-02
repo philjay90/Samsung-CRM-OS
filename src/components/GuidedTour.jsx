@@ -57,21 +57,30 @@ export default function GuidedTour({ active, onClose }) {
   const goToStep = useCallback((idx) => {
     if (idx < 0 || idx >= STEPS.length) return
     setAnimating(true)
+    const scrollToTop = () => {
+      window.scrollTo(0, 0)
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+      const content = document.querySelector('.content-area')
+      if (content) content.scrollTop = 0
+    }
+    scrollToTop()
     setTimeout(() => {
       setStep(idx)
       navigate(STEPS[idx].route)
       setTimeout(() => {
         setAnimating(false)
+        scrollToTop()
         if (STEPS[idx].scrollTo) {
           setTimeout(() => {
-            const el = document.querySelector(STEPS[idx].highlightSelector)
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            scrollToTop()
+            setTimeout(() => {
+              const el = document.querySelector(STEPS[idx].highlightSelector)
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            }, 100)
           }, 200)
-        } else {
-          const content = document.querySelector('.content-area')
-          if (content) content.scrollTop = 0
         }
-      }, 50)
+      }, 100)
     }, 200)
   }, [navigate])
 
